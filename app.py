@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
@@ -10,7 +11,7 @@ app.config.update(
 )
 
 db = SQLAlchemy(app)
-
+migrate = Migrate(app, db)
 
 @app.route('/')
 def hello():
